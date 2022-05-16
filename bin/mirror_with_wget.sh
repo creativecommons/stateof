@@ -3,6 +3,11 @@ set -o errtrace
 set -o nounset
 
 
+# SCRIPT DISABLED
+echo 'ERROR: script disabled' 1>&2
+exit 1
+
+
 function _change_to_repo_dir {
     cd "${0%/*}/.." >/dev/null
 }
