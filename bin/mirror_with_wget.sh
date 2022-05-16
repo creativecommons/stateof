@@ -29,11 +29,11 @@ _mirror(){
 
 prep() {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Preparing to State of the Commons'
-    if [[ -d docs ]]
+    if [[ -d temp_download ]]
     then
-        # Remove HTML files to prevent issues with --continue
-        find docs -name '*.html' -delete
-        mv docs stateof.creativecommons.org
+        # Remove modified HTML files to prevent issues with --continue
+        find temp_download -name '*.html' -delete
+        mv temp_download stateof.creativecommons.org
     fi
 }
 
@@ -54,18 +54,26 @@ _2016_subdir() {
 }
 
 
+_2015_subdir() {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Mirroring 2015 State of the Commons'
+    # Mirror
+    _mirror /2015/
+    echo
+}
+
+
 _cleanup() {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Performing clean-up on mirror'
     if [[ -d stateof.creativecommons.org ]]
     then
-        mv stateof.creativecommons.org docs
+        mv stateof.creativecommons.org temp_download
     else
         exit
     fi
     # Remove any empty directories
-    find docs -type d -empty -delete
+    find temp_download -type d -empty -delete
     echo 'Final size:'
-    du -sh docs
+    du -sh temp_download
     echo
 }
 
@@ -75,4 +83,5 @@ cd "${BASE}/.." >/dev/null
 _prep
 _2017_root
 _2016_subdir
+_2015_subdir
 _cleanup
