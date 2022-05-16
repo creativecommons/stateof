@@ -37,7 +37,7 @@ This static copy was created by:
 [![CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
 button][cc-zero-png]][cc-zero]
 
-[`COPYING`](COPYING): The bin scripts within this repository is dedicated to
+[`COPYING`](COPYING): The bin scripts within this repository are dedicated to
 the public domain under the [CC0 1.0 Universal (CC0 1.0) Public Domain
 Dedication][cc-zero].
 
