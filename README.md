@@ -18,6 +18,8 @@ This static copy was created by:
     ```shell
     ./bin/update_for_static.sh
     ```
+   - [sed, a stream editor](https://www.gnu.org/software/sed/manual/sed.html)
+     (manual)
 
 These commands should ***not*** be run again. Any corrections should be
 incorporated into a new script.
