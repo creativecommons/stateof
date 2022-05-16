@@ -23,7 +23,7 @@ This static copy was created by:
    - [GNU Wget Manual](http://www.gnu.org/software/wget/manual/wget.html)
 2. Updating the files using GNU sed
     ```shell
-    ./bin/update_for_static.sh
+    ./bin/create_static_site.sh
     ```
    - [sed, a stream editor](https://www.gnu.org/software/sed/manual/sed.html)
      (manual)
