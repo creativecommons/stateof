@@ -6,7 +6,14 @@ Static copy of legacy State of the Commons site
 ## Overview
 
 The legacy State of the Commons site was a combination of three (3) seperate
-WordPress sites.
+WordPress sites. They were converted to static content using the [Initial
+Creation](#initial-creation) process, below.
+
+
+## Initial Creation
+
+:warning: **The commands below should NOT be run again.** Any corrections
+should be incorporated into a new script(s).
 
 This static copy was created by:
 1. Mirroring the site with `wget`:
@@ -20,9 +27,6 @@ This static copy was created by:
     ```
    - [sed, a stream editor](https://www.gnu.org/software/sed/manual/sed.html)
      (manual)
-
-These commands should ***not*** be run again. Any corrections should be
-incorporated into a new script.
 
 
 ## Copying & License
