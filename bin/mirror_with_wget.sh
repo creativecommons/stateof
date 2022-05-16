@@ -3,10 +3,12 @@ set -o errtrace
 set -o nounset
 
 
-BASE="${0%/*}"
+function _change_to_repo_dir {
+    cd "${0%/*}/.." >/dev/null
+}
 
 
-_mirror(){
+function _mirror {
     # Note: the --mirror option is equivalent to:
     #   --recursive
     #   --timestamping
@@ -38,7 +40,7 @@ prep() {
 }
 
 
-_2017_root() {
+function _2017_root {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Mirroring 2017 State of the Commons'
     # Mirror
     _mirror /
@@ -46,7 +48,7 @@ _2017_root() {
 }
 
 
-_2016_subdir() {
+function _2016_subdir {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Mirroring 2016 State of the Commons'
     # Mirror
     _mirror /2016/
@@ -54,7 +56,7 @@ _2016_subdir() {
 }
 
 
-_2015_subdir() {
+function _2015_subdir {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Mirroring 2015 State of the Commons'
     # Mirror
     _mirror /2015/
@@ -62,7 +64,7 @@ _2015_subdir() {
 }
 
 
-_cleanup() {
+function _cleanup {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Performing clean-up on mirror'
     if [[ -d stateof.creativecommons.org ]]
     then
@@ -78,8 +80,7 @@ _cleanup() {
 }
 
 
-cd "${BASE}/.." >/dev/null
-
+_change_to_repo_dir  # must be called first
 _prep
 _2017_root
 _2016_subdir
