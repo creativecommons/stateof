@@ -13,7 +13,7 @@ Creation](#initial-creation) process, below.
 ## Initial Creation
 
 :warning: **The commands below should NOT be run again.** Any corrections
-should be incorporated into a new script(s).
+should be incorporated into new scripts.
 
 This static copy was created by:
 1. Mirroring the site with `wget`:
