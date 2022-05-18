@@ -21,11 +21,13 @@ function _change_to_repo_dir {
 }
 
 
-function _recreate_docs_dir {
+function _wipe_and_recreate_docs_dir {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Wipe and recreate docs/ directory'
     rm -rf docs/*
     cp -a temp_download/* docs/
     touch docs/.nojekyll
     printf 'dev-stateof.creativecommons.org' > docs/CNAME
+    echo
 }
 
 
@@ -92,6 +94,19 @@ function _update_licensebuttons_domain {
 }
 
 
+function _fix_social_media_links {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Fix 2017 Social Media links'
+    for _file in $(find docs -maxdepth 1 -type f -name '*.html')
+    do
+        ${SED} --regexp-extended \
+            -e's#^(<a.*elementor-social-icon-facebook" href=")[^"]+(" target="_blank">)#\1https://www.facebook.com/creativecommons\2#g' \
+            -e's#^(<a.*elementor-social-icon-twitter" href=")[^"]+(" target="_blank">)#\1https://twitter.com/creativecommons\2#g' \
+            --in-place "${_file}"
+    done
+    echo
+}
+
+
 function _replace_full_urls_with_absolute_paths {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Replace full URLs with absolute paths'
     # Non-escaped URLs with protocol
@@ -102,7 +117,7 @@ function _replace_full_urls_with_absolute_paths {
         for _file in $(grep --files-with-matches --max-count=1 \
             --recursive "${_pattern}" docs)
         do
-            ${SED} --in-place -e"s#${_pattern}#/#g" "${_file}"
+            ${SED} -e"s#${_pattern}#/#g" --in-place "${_file}"
         done
     done
     # Non-escaped URLs without protocol
@@ -110,14 +125,15 @@ function _replace_full_urls_with_absolute_paths {
     for _file in $(grep --files-with-matches --max-count=1 \
         --recursive "${_pattern}" docs)
     do
-        ${SED} --in-place -e"s#${_pattern}#/#g" "${_file}"
+        ${SED} -e"s#${_pattern}#/#g" --in-place "${_file}"
     done
     # Escaped URL
     for _file in $(grep --fixed-strings --files-with-matches --max-count=1 \
         --recursive 'https:\/\/stateof.creativecommons.org\/' docs)
     do
-        ${SED} --in-place \
-            -e's#https:\\/\\/stateof\.creativecommons\.org\\/#\\/#g' "${_file}"
+        ${SED} \
+            -e's#https:\\/\\/stateof\.creativecommons\.org\\/#\\/#g' \
+            --in-place "${_file}"
     done
     echo
 }
@@ -155,7 +171,7 @@ function _cleanup_plaintext_whitespace {
     for _file in $(find docs -type f \
         \( -name '*.css' -o -name '*.html' -o -name '*.js' \))
     do
-        ${SED} --in-place -e's#[ \t]\+$##' "${_file}"
+        ${SED} -e's#[ \t]\+$##' --in-place "${_file}"
     done
     echo
 }
@@ -168,10 +184,11 @@ function _cleanup_orig_file_backups {
 
 
 _change_to_repo_dir  # must be called first
-_recreate_docs_dir
+_wipe_and_recreate_docs_dir
 _remove_lines_from_html_files
 _restore_query_strings_in_html_files
 _update_licensebuttons_domain
+_fix_social_media_links
 _replace_full_urls_with_absolute_paths
 _revert_non_html_conversions
 _cleanup_plaintext_whitespace
