@@ -31,8 +31,9 @@ function _wipe_and_recreate_docs_dir {
 }
 
 
-function _remove_lines_from_html_files {
-    printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove unhelpful lines from HTLM files'
+function _remove_deprecated_links_meta_scripts_from_html_files {
+    printf "\e[1m\e[7m %-80s\e[0m\n" \
+        'Remove deprected links, meta, and scripts from HTLM files'
     for _file in $(find docs -type f -name '*.html')
     do
         # 1. Remove link: WordPress Edit URI
@@ -42,18 +43,25 @@ function _remove_lines_from_html_files {
         # 5. Remove link: WordPress v0 prefetch
         # 6. Remove link: WordPress Windows Live Writer Manifest link
         # 7. Remove meta: generator
-        # 8. Remove script: WordPress stats
-        # 9. Remove (no)script: stats.creativecommons.org
+        # 8. Remove meta: generator at end of line
+        # 9. Remove script: WordPress stats
         ${SED} \
-            -e'/rel="EditURI"/d' \
-            -e'/^<link.*stateof\.creativecommons\.org\/wp-json\//d' \
-            -e'/type="application\/rss+xml"/d' \
-            -e"/rel='shortlink'/d" \
-            -e'/href=.https:\/\/v0\.wordpress\.com\//d' \
-            -e'/rel="wlwmanifest"/d' \
-            -e'/name="generator"/d' \
-            -e'/src=.https:\/\/stats\.wp\.com\//d' \
-            -e'/src=.https:\/\/stats\.creativecommons\.org\//d' \
+            -e'/^<link rel="EditURI"/d' \
+            -e'/^<link .*\/wp-json\//d' \
+            -e'/^<link .*type="application\/rss+xml"/d' \
+            -e"/^<link rel='shortlink'/d" \
+            -e'/^<link .*v0\.wordpress\.com/d' \
+            -e'/^<link rel="wlwmanifest"/d' \
+            -e'/^<meta name="generator"/d' \
+            -e's#<meta name="generator".*$##' \
+            -e'/^<script .*stats\.wp\.com.*<\/script>$/d' \
+            --in-place "${_file}"
+    done
+    for _file in $(find docs/2015 -type f -name '*.html')
+    do
+        # 1. Remove (no)script: stats.creativecommons.org
+        ${SED} --null-data \
+            -e's#<script [^\n]*stats\.creativecommons\.org.*</noscript>\n##' \
             --in-place "${_file}"
     done
     echo
@@ -235,7 +243,7 @@ function _cleanup_orig_file_backups {
 
 _change_to_repo_dir  # must be called first
 _wipe_and_recreate_docs_dir
-_remove_lines_from_html_files
+_remove_deprecated_links_meta_scripts_from_html_files
 _restore_query_strings_in_html_files
 _update_licensebuttons_domain
 _fix_2017_social_media_links
