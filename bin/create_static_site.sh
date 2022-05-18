@@ -116,6 +116,16 @@ function _fix_2015_twitter_links {
 }
 
 
+function _remove_2015_broken_french_translation {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove 2015 broken French translation'
+    ${SED} --regexp-extended \
+        -e's#^(<li><a href="translation-xas\.csv\.html">Fre.*$)#<!-- \1 -->#' \
+        --in-place docs/2015/index.html
+    rm docs/2015/translation-xas.csv.html
+    echo
+}
+
+
 function _replace_full_urls_with_absolute_paths {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Replace full URLs with absolute paths'
     # Non-escaped URLs with protocol
@@ -199,6 +209,7 @@ _restore_query_strings_in_html_files
 _update_licensebuttons_domain
 _fix_2017_social_media_links
 _fix_2015_twitter_links
+_remove_2015_broken_french_translation
 _replace_full_urls_with_absolute_paths
 _revert_non_html_conversions
 _cleanup_plaintext_whitespace
