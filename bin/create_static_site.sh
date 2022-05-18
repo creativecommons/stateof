@@ -75,12 +75,13 @@ function _restore_query_strings_in_html_files {
             -e's#(\.js)%3F(ver=)#\1?\2#g' \
             -e's#(\.ttf)%3F#\1?#g' \
             -e's#(\.woff2+)%3F#\1?#g' \
-            -e's#(style_dynamic\.php)%3F#\1?#g' \
-            -e's#(style_dynamic_responsive\.php)%3F#\1?#g' \
+            -e's#(style_dynamic\.php)%3F#\1.css?#g' \
+            -e's#(style_dynamic_responsive\.php)%3F#\1.css?#g' \
             --in-place "${_file}"
     done
     echo
 }
+
 
 function _update_licensebuttons_domain {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Update licensebuttons domain'
@@ -205,6 +206,10 @@ function _revert_non_html_conversions {
     for _file in $(find docs -type f -name '*.woff2.html')
     do
         mv "${_file}" "${_file%.html}"
+    done
+    for _file in docs/2016/wp-content/themes/optimizewp/assets/css/*.php
+    do
+        mv ${_file} ${_file}.css
     done
     echo
 }

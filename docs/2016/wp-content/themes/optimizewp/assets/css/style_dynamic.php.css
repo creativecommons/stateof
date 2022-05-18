@@ -106,11 +106,11 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             .mkdf-page-header #lang_sel ul > li:hover > a{
              color: #ffffff;                             font-family: 'Source Sans Pro', sans-serif;
                                                                                     }
-        
+
                     .mkdf-page-header #lang_sel_list{
             font-family: 'Source Sans Pro', sans-serif !important;
             }
-        
+
                     .mkdf-main-menu.mkdf-default-nav > ul > li:hover > a,
             .mkdf-main-menu.mkdf-default-nav > ul > li.mkdf-active-item:hover > a,
             body:not(.mkdf-menu-item-first-level-bg-color) .mkdf-main-menu.mkdf-default-nav > ul > li:hover > a,
@@ -119,19 +119,19 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             .mkdf-page-header #lang_sel_click > ul > li a:hover{
             color: #000000 !important;
             }
-        
-        
-        
-        
-        
 
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
             .mkdf-drop-down .second .inner ul,
             .mkdf-drop-down .second .inner ul li ul,
             .shopping_cart_dropdown,
@@ -144,12 +144,12 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             background-color: rgba(255,255,255,1);
             }
 
-        
-        
-        
+
+
+
                     header .mkdf-drop-down .second {
             top: 67%;            }
-        
+
                     .mkdf-drop-down .second .inner > ul > li > a,
             .mkdf-drop-down .second .inner > ul > li > h4,
             .mkdf-drop-down .wide .second .inner > ul > li > h4,
@@ -166,7 +166,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             .mkdf-main-menu.mkdf-default-nav #lang_sel_click ul ul a{
              color: #0086a3;                             font-family: 'Source Sans Pro', sans-serif !important;
                                                                                                 }
-        
+
                     .shopping_cart_dropdown ul li
             .item_info_holder .item_left a,
             .shopping_cart_dropdown ul li .item_info_holder .item_right .amount,
@@ -174,7 +174,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             .shopping_cart_dropdown .cart_bottom .subtotal_holder .total_amount{
             color: #0086a3;
             }
-        
+
                     .mkdf-drop-down .second .inner > ul > li:hover > a,
             .mkdf-drop-down .wide .second ul li ul li.menu-item-has-children:hover > a,
             .mkdf-drop-down .wide .second .inner ul li.sub ul li.menu-item-has-children:hover > a,
@@ -184,16 +184,16 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
             .mkdf-main-menu.mkdf-default-nav #lang_sel_click ul li:hover > a{
             color: #000000 !important;
             }
-        
-        
-        
-        
-        
-        
-        
-                
-        
-                
+
+
+
+
+
+
+
+
+
+
         /* generated in /var/www/sotc-2016/wp-content/themes/optimizewp/framework/modules/header/custom-styles/mobile-header.php optimize_mikado_mobile_header_general_styles function */
 .mkdf-mobile-header .mkdf-mobile-header-inner { background-color: #01add1;}
 
