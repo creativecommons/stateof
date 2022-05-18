@@ -10,6 +10,14 @@ WordPress sites. They were converted to static content using the [Initial
 Creation](#initial-creation) process, below.
 
 
+## Data Files
+
+Data files for the 2015-2017 State of the Commons reports can be found in:
+- [cc-archive/sotc-2015](https://github.com/cc-archive/sotc-2015)
+- [cc-archive/sotc-2016](https://github.com/cc-archive/sotc-2016)
+- [cc-archive/sotc-2017](https://github.com/cc-archive/sotc-2017)
+
+
 ## Initial Creation
 
 :warning: **The commands below should NOT be run again.** Any corrections
