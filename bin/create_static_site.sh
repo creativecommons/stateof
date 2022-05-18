@@ -94,7 +94,7 @@ function _update_licensebuttons_domain {
 }
 
 
-function _fix_social_media_links {
+function _fix_2017_social_media_links {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Fix 2017 Social Media links'
     for _file in $(find docs -maxdepth 1 -type f -name '*.html')
     do
@@ -103,6 +103,15 @@ function _fix_social_media_links {
             -e's#^(<a.*elementor-social-icon-twitter" href=")[^"]+(" target="_blank">)#\1https://twitter.com/creativecommons\2#g' \
             --in-place "${_file}"
     done
+    echo
+}
+
+
+function _fix_2015_twitter_links {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Fix 2015 Twitter links'
+    ${SED} \
+        -e's#^&lt;a href=.https://twitter\.com.*$#<a href="https://twitter.com/intent/tweet?source=webclient\&amp;text=State+of+the+Commons+stateof.creativecommons.org%2F2015%2F\&via=creativecommons"><img src="https://licensebuttons.net/gi/social-32-twitter.png" alt="">\&nbsp; Share on Twitter</a>#g' \
+        --in-place docs/2015/index.html
     echo
 }
 
@@ -188,7 +197,8 @@ _wipe_and_recreate_docs_dir
 _remove_lines_from_html_files
 _restore_query_strings_in_html_files
 _update_licensebuttons_domain
-_fix_social_media_links
+_fix_2017_social_media_links
+_fix_2015_twitter_links
 _replace_full_urls_with_absolute_paths
 _revert_non_html_conversions
 _cleanup_plaintext_whitespace
