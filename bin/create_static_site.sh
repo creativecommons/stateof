@@ -116,6 +116,14 @@ function _fix_2017_social_media_links {
 }
 
 
+function _remove_2016_unused_files {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove 2016 unused files'
+    rm -rf docs/2016/negara-commons-2017-2
+    rm -rf docs/2016/стан-коммонс-2016-року
+    echo
+}
+
+
 function _remove_2016_broken_newsletter_form {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove 2016 broken newsletter form'
     for _file in $(find docs/2016 -type f -name '*.html')
@@ -247,6 +255,7 @@ _remove_deprecated_links_meta_scripts_from_html_files
 _restore_query_strings_in_html_files
 _update_licensebuttons_domain
 _fix_2017_social_media_links
+_remove_2016_unused_files
 _remove_2016_broken_newsletter_form
 _fix_2015_twitter_links
 _remove_2015_broken_french_translation
