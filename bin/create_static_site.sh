@@ -107,6 +107,19 @@ function _fix_2017_social_media_links {
 }
 
 
+function _remove_2016_broken_newsletter_form {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove 2016 broken newsletter form'
+    for _file in $(find docs/2016 -type f -name '*.html')
+    do
+        ${SED} --null-data \
+            -e's#<div id="deed-donate-slide".*</form>\n</div>\n</div>\n</div>\n</div>\n##' \
+            -e's#<script[^\n]*\n\n  function isScrolledIntoView.*&gt;\n</script>\n##' \
+            --in-place "${_file}"
+    done
+    echo
+}
+
+
 function _fix_2015_twitter_links {
     printf "\e[1m\e[7m %-80s\e[0m\n" 'Fix 2015 Twitter links'
     ${SED} \
@@ -122,6 +135,19 @@ function _remove_2015_broken_french_translation {
         -e's#^(<li><a href="translation-xas\.csv\.html">Fre.*$)#<!-- \1 -->#' \
         --in-place docs/2015/index.html
     rm docs/2015/translation-xas.csv.html
+    echo
+}
+
+
+function _remove_2015_broken_newsletter_form {
+    printf "\e[1m\e[7m %-80s\e[0m\n" 'Remove 2015 broken newsletter form'
+    ${SED} \
+        -e'/^<form/d' \
+        -e'/^<p class="text-center">.*Creative Commons newsletter/d' \
+        -e'/^<p class="text-center"><input id="email-Primary"/d' \
+        -e'/^<button class="btn btn-success" id="_qf_Edit_next"/d' \
+        -e'/^<\/form>/d' \
+        --in-place docs/2015/index.html
     echo
 }
 
@@ -208,8 +234,10 @@ _remove_lines_from_html_files
 _restore_query_strings_in_html_files
 _update_licensebuttons_domain
 _fix_2017_social_media_links
+_remove_2016_broken_newsletter_form
 _fix_2015_twitter_links
 _remove_2015_broken_french_translation
+_remove_2015_broken_newsletter_form
 _replace_full_urls_with_absolute_paths
 _revert_non_html_conversions
 _cleanup_plaintext_whitespace
