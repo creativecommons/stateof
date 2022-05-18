@@ -36,15 +36,16 @@ function _remove_deprecated_links_meta_scripts_from_html_files {
         'Remove deprected links, meta, and scripts from HTLM files'
     for _file in $(find docs -type f -name '*.html')
     do
-        # 1. Remove link: WordPress Edit URI
-        # 2. Remove link: WordPress JSON API
-        # 3. Remove link: WordPress RSS
-        # 4. Remove link: WordPress shortlink
-        # 5. Remove link: WordPress v0 prefetch
-        # 6. Remove link: WordPress Windows Live Writer Manifest link
-        # 7. Remove meta: generator
-        # 8. Remove meta: generator at end of line
-        # 9. Remove script: WordPress stats
+        #  1. Remove link: WordPress Edit URI
+        #  2. Remove link: WordPress JSON API
+        #  3. Remove link: WordPress RSS
+        #  4. Remove link: WordPress shortlink
+        #  5. Remove link: WordPress v0 prefetch
+        #  6. Remove link: WordPress Windows Live Writer Manifest link
+        #  7. Remove meta: generator
+        #  8. Remove meta: generator at end of line
+        #  9. Remove script: JetPack scripts
+        # 10. Remove script: WordPress stats
         ${SED} \
             -e'/^<link rel="EditURI"/d' \
             -e'/^<link .*\/wp-json\//d' \
@@ -54,6 +55,7 @@ function _remove_deprecated_links_meta_scripts_from_html_files {
             -e'/^<link rel="wlwmanifest"/d' \
             -e'/^<meta name="generator"/d' \
             -e's#<meta name="generator".*$##' \
+            -e'/^<script .*jetpack.*<\/script>$/d' \
             -e'/^<script .*stats\.wp\.com.*<\/script>$/d' \
             --in-place "${_file}"
     done
