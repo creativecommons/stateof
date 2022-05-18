@@ -46,6 +46,7 @@ function _remove_deprecated_links_meta_scripts_from_html_files {
         #  8. Remove meta: generator at end of line
         #  9. Remove script: JetPack scripts
         # 10. Remove script: WordPress stats
+        # 11. Remove script: WordPress Admin AJAX
         ${SED} \
             -e'/^<link rel="EditURI"/d' \
             -e'/^<link .*\/wp-json\//d' \
@@ -57,6 +58,7 @@ function _remove_deprecated_links_meta_scripts_from_html_files {
             -e's#<meta name="generator".*$##' \
             -e'/^<script .*jetpack.*<\/script>$/d' \
             -e'/^<script .*stats\.wp\.com.*<\/script>$/d' \
+            -e's#^<script .*/2016/wp-admin/admin-ajax\.php"</script>##' \
             --in-place "${_file}"
     done
     for _file in $(find docs/2015 -type f -name '*.html')
