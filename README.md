@@ -57,7 +57,7 @@ Domain Dedication][cc-zero].
 
 [![CC BY 4.0 license button][cc-by-png]][cc-by]
 
-[`LICENSE`](LICENSE)Except where otherwise stated, content on this site is
+[`LICENSE`](LICENSE): Except where otherwise stated, content on this site is
 licensed under a [Creative Commons Attribution 4.0 International
 License][cc-by].
 
