@@ -1,6 +1,9 @@
 # stateof
 
-Static copy of legacy State of the Commons site
+Static copy of legacy State of the Commons site:
+- https://stateof.creativecommons.org/ (2017)
+- https://stateof.creativecommons.org/2016/
+- https://stateof.creativecommons.org/2015/
 
 
 ## Overview
