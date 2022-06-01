@@ -1,6 +1,6 @@
 # stateof
 
-Static copy of legacy State of the Commons site:
+Static copy of legacy Creative Commons (CC) State of the Commons (SotC) sites:
 - https://stateof.creativecommons.org/ (2017)
 - https://stateof.creativecommons.org/2016/
 - https://stateof.creativecommons.org/2015/
@@ -8,9 +8,15 @@ Static copy of legacy State of the Commons site:
 
 ## Overview
 
-The legacy State of the Commons site was a combination of three (3) seperate
+The legacy State of the Commons sites were a collection of three (3) seperate
 WordPress sites. They were converted to static content using the [Initial
 Creation](#initial-creation) process, below.
+
+**For a complete list of CC Annual Reports / State of the Commons, see:
+[Creative Commons Annual Report Archives - Creative
+Commons][tag-annual-report].**
+
+[tag-annual-report]: https://creativecommons.org/tag/creative-commons-annual-report/
 
 
 ## Data Files
