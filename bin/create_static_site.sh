@@ -33,7 +33,7 @@ function _wipe_and_recreate_docs_dir {
 
 function _remove_deprecated_links_meta_scripts_from_html_files {
     printf "\e[1m\e[7m %-80s\e[0m\n" \
-        'Remove deprected links, meta, and scripts from HTLM files'
+        'Remove deprected links, meta, and scripts from HTML files'
     for _file in $(find docs -type f -name '*.html')
     do
         #  1. Remove link: WordPress Edit URI
